@@ -38,4 +38,5 @@
                 network_identifier:(NSString *)network_identifier
           network_cache_identifier:(NSString *)network_cache_identifier;
 
+- (id)_updateByServerItemData:(NSDictionary *)data mo:(NSManagedObject *)mo context:context;
 @end

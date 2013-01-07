@@ -16,6 +16,10 @@
     return NO;
 }
 
++ (BOOL)enableAutoMapping{
+    return NO;
+}
+
 + (NSString *)guid_for_sync_key{
     return @"pk";
 }

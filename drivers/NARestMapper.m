@@ -61,6 +61,16 @@
     if([[mo class] enabled_auto_delete_management]){
         mo.is_deleted_for_sync = [[mo class] isDeletedKeyInServerItemData:data];
     }
+    if([[mo class] enableAutoMapping]){
+        for(NSString *attribute in [[mo entity] attributesByName]){
+            NSString *dotattribute = [attribute stringByReplacingOccurrencesOfString:@"__" withString:@"."];
+            id value = [data valueForKeyPath:dotattribute];
+            if(isnull(value))
+                continue;
+            [mo setValue:value forKeyPath:attribute];
+        }
+    }
+    
     [mo updateByServerItemData:data context:context];
     return nil;
 }
