@@ -10,13 +10,11 @@
 #import "NSManagedObject+restdriver.h"
 #import "NSManagedObjectContext+na.h"
 
+#import "NSManagedObject+json.h"
+
 @implementation NSManagedObject (restobject)
 
 + (BOOL)enabled_auto_delete_management{
-    return NO;
-}
-
-+ (BOOL)enableAutoMapping{
     return NO;
 }
 
@@ -25,7 +23,7 @@
 }
 
 + (NSString *)data_for_sync_key{
-    return @"data";
+    return [self data_for_key];
 }
 
 + (NSString *)edited_data_for_sync_key{

@@ -16,7 +16,6 @@
  デフォルト: off
  */
 + (BOOL)enabled_auto_delete_management;
-+ (BOOL)enableAutoMapping;
 
 + (NSString *)guid_for_sync_key;
 + (NSString *)data_for_sync_key;
