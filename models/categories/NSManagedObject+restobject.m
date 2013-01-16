@@ -10,6 +10,8 @@
 #import "NSManagedObject+restdriver.h"
 #import "NSManagedObjectContext+na.h"
 
+#import "NSManagedObject+json.h"
+
 @implementation NSManagedObject (restobject)
 
 + (BOOL)enabled_auto_delete_management{
@@ -21,7 +23,7 @@
 }
 
 + (NSString *)data_for_sync_key{
-    return @"data";
+    return [self data_for_key];
 }
 
 + (NSString *)edited_data_for_sync_key{
@@ -82,7 +84,8 @@ INTEGER_ACCESSOR(is_deleted_for_sync, setIs_deleted_for_sync, [[self class] is_d
 }
 
 + (id)getOrCreateObjectByData:(id)data inContext:(NSManagedObjectContext *)context{
-    NSManagedObject *mo = [context getOrCreateObject:[self restEntityName] props:@{[self guid_for_sync_key]: @([self primaryKeyInServerItemData:data])}];
+    NSManagedObjectContextGetOrCreateDictionary *dic = [context getOrCreateObject:[self restEntityName] props:@{[self guid_for_sync_key]: @([self primaryKeyInServerItemData:data])}];
+    NSManagedObject *mo = dic.object;
     return mo;
 }
 

@@ -31,6 +31,6 @@
 
 + (void)prepareData:(id)data context:(NSManagedObjectContext *)context;
 
-- (void)updateByServerItemData:(id)itemData context:(NSManagedObjectContext *)context;
+- (void)updateByJSON:(id)json context:(NSManagedObjectContext *)context;
 
 @end

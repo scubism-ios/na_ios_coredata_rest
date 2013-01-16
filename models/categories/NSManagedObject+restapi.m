@@ -114,7 +114,7 @@
     }else{
         newQuery = @{@"sync_state": @(NASyncModelSyncStateEDITED)};
     }
-    NSArray *mos = [self filter:newQuery options:nil];
+    NSArray *mos = [self filter:newQuery];
     for (NSManagedObject *mo in mos) {
         if(mo.guid_for_sync != NASyncModelGUIDTypeNotInServer){
             [mo sync_update:maskType options:options complete:nil];
@@ -135,7 +135,7 @@
     }else{
         newQuery = @{@"sync_state": @(NASyncModelSyncStateEDITED)};
     }
-    NSArray *mos = [self filter:newQuery options:nil];
+    NSArray *mos = [self filter:newQuery];
     for (NSManagedObject *mo in mos) {
         if(mo.guid_for_sync != NASyncModelGUIDTypeNotInServer){
             [mo sync_delete:maskType options:options complete:nil];

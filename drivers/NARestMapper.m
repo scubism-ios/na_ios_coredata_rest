@@ -61,7 +61,8 @@
     if([[mo class] enabled_auto_delete_management]){
         mo.is_deleted_for_sync = [[mo class] isDeletedKeyInServerItemData:data];
     }
-    [mo updateByServerItemData:data context:context];
+    
+    [mo updateByJSON:data context:context];
     return nil;
 }
 
